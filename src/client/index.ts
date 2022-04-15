@@ -1,4 +1,4 @@
-import { ForecastBody } from "./types";
+import { ForecastBody, LocationSearchBody } from "./types";
 import config from "../config";
 
 class Client {
@@ -7,10 +7,29 @@ class Client {
     this.url = url;
   }
 
-  public async getForecast(): Promise<ForecastBody | undefined> {
+  public async getForecast(
+    locationQuery: string
+  ): Promise<ForecastBody | undefined> {
     try {
       const res = await fetch(
-        `${this.url}/forecast.json?key=${config.apiKey}&q=London&days=2&aqi=no&alerts=no`,
+        `${this.url}/forecast.json?key=${config.apiKey}&q=${locationQuery}&days=3&aqi=no&alerts=no`,
+        {
+          method: "GET",
+        }
+      );
+      return await res.json();
+    } catch (e) {
+      // TODO: Reflect errors on frontend popup
+      console.error(e);
+    }
+  }
+
+  public async getLocationSearch(
+    locationQuery: string
+  ): Promise<LocationSearchBody[] | undefined> {
+    try {
+      const res = await fetch(
+        `${this.url}/search.json?key=${config.apiKey}&q=${locationQuery}`,
         {
           method: "GET",
         }

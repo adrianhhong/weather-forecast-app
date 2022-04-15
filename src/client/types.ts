@@ -125,3 +125,13 @@ export interface Forecastday {
 export interface Forecast {
   forecastday: Forecastday[];
 }
+
+export interface LocationSearchBody {
+  id: number;
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  url: string;
+}
