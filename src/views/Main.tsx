@@ -2,28 +2,32 @@ import { useState, useEffect } from "react";
 import client from "../client";
 
 const Main = (): JSX.Element => {
-  const [isLoadingCart, setIsLoadingCart] = useState(false);
-  const [cart, setCart] = useState({});
+  // const [isLoadingCart, setIsLoadingCart] = useState(false);
+  const [forecast, setForecast] = useState({});
 
   // Get forecast
   const getForecast = async () => {
-    setIsLoadingCart(true);
-    const newCart = await client.getForecast();
-    if (newCart != null) {
-      setCart(newCart);
+    // setIsLoadingCart(true);
+    const newForecast = await client.getForecast();
+    if (newForecast != null) {
+      setForecast(newForecast);
     }
-    setIsLoadingCart(false);
+    console.log(newForecast);
+    // setIsLoadingCart(false);
   };
 
   // Get forecast on mount
   useEffect(() => {
     (async function forecastGetter() {
       getForecast();
-      console.log(cart);
     })();
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <h1>Weather Forecast App</h1>
+    </>
+  );
 };
 
 export default Main;
