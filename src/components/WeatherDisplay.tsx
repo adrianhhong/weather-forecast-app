@@ -1,5 +1,7 @@
 import { Grid, Typography, Box, CircularProgress } from "@mui/material";
-import { ForecastBody } from "../client/types";
+import { deepPurple, grey } from "@mui/material/colors";
+import { ForecastBody, Forecastday } from "../client/types";
+import FutureForecast from "./FutureForecast";
 
 interface WeatherDisplayProps {
   forecast: ForecastBody | null;
@@ -16,17 +18,23 @@ const WeatherDisplay = ({
         <CircularProgress />
       ) : (
         forecast && (
-          <Grid container spacing={2}>
+          <Grid container gap={3}>
             <Grid
               item
               xs={12}
-              sx={{ backgroundColor: "#e8eaf6", borderRadius: "25px" }}
+              sx={{
+                background: `linear-gradient(${deepPurple[400]}, ${deepPurple[700]})`,
+                borderRadius: "25px",
+                color: grey[50],
+                gap: 0.5,
+              }}
             >
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: 0.5,
+                  alignItems: "center",
+                  m: 3,
                 }}
               >
                 <Typography component="h3" variant="body1">
@@ -41,14 +49,6 @@ const WeatherDisplay = ({
                       minute: "numeric",
                     })}`}
                 </Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
                 {forecast?.current?.condition != null && (
                   <img
                     src={forecast?.current?.condition?.icon}
@@ -66,17 +66,24 @@ const WeatherDisplay = ({
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="body2">
-                {forecast?.current?.last_updated_epoch != null &&
-                  `${new Date(
-                    forecast?.current?.last_updated_epoch * 1000
-                  ).toLocaleString("en", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}`}
-              </Typography>
+            <Grid
+              item
+              justifyContent="space-around"
+              xs={12}
+              marginBottom={5}
+              sx={{
+                background: `linear-gradient(${deepPurple[400]}, ${deepPurple[700]})`,
+                borderRadius: "25px",
+                color: grey[50],
+              }}
+            >
+              <Box
+                sx={{
+                  m: 3,
+                }}
+              >
+                <FutureForecast forecast={forecast} />
+              </Box>
             </Grid>
           </Grid>
         )

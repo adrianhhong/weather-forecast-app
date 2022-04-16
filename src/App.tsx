@@ -1,4 +1,5 @@
 import { CssBaseline } from "@mui/material";
+import { blue, blueGrey, deepPurple, grey, indigo } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Main from "./views/Main";
 declare module "@mui/material/styles" {
@@ -18,17 +19,17 @@ declare module "@mui/material/styles" {
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#3f51b5",
+      main: deepPurple[500],
     },
     // secondary: {
     //   main: "#c5cae9",
     // },
     background: {
-      default: "#c5cae9",
+      default: deepPurple[100],
     },
-    // text: {
-    //   primary: "#ffffff",
-    // },
+    text: {
+      primary: grey[800],
+    },
   },
 });
 

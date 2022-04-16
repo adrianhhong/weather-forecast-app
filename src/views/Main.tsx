@@ -67,19 +67,27 @@ const Main = (): JSX.Element => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 3,
+            gap: 5,
           }}
         >
-          <Typography component="h1" variant="h4">
-            Weather
-            <Typography component="h1" fontSize={15}>
-              <i>by Adrian Hong</i>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
+            <Typography component="h1" variant="h4">
+              <b>Weather</b>
+              <Typography component="h1" fontSize={15}>
+                <i>by Adrian Hong</i>
+              </Typography>
             </Typography>
-          </Typography>
-
-          <Typography component="h2" variant="body1">
-            <i>Find out whether the weather is wet there! 💦</i>
-          </Typography>
+            <Typography component="h2" fontSize={13}>
+              <i>Find out whether the weather is wet there!</i>
+            </Typography>
+          </Box>
           <Autocomplete
             sx={{ width: 300 }}
             renderInput={(params) => (
@@ -101,7 +109,7 @@ const Main = (): JSX.Element => {
           />
           <WeatherDisplay forecast={forecast} loading={forecastLoading} />
         </Box>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </>
   );
