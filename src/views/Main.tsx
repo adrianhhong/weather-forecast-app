@@ -13,10 +13,13 @@ import Footer from "../components/Footer";
 const defaultOptions: string[] = [];
 
 const Main = (): JSX.Element => {
-  const [forecast, setForecast] = useState<ForecastBody>({} as ForecastBody);
+  const [forecast, setForecast] = useState<ForecastBody | null>(null);
   const [locationSearchValue, setLocationSearchValue] = useState("");
   const [locationSearchOptions, setLocationSearchOptions] =
     useState(defaultOptions);
+  const [autocompleteLoading, setAutocompleteLoading] =
+    useState<boolean>(false);
+  const [forecastLoading, setForecastLoading] = useState<boolean>(false);
 
   // Get locations and present in nice format
   const getLocations = async (text: string) => {
@@ -29,6 +32,7 @@ const Main = (): JSX.Element => {
         ) || []
       );
     }
+    setAutocompleteLoading(false);
   };
 
   // On search change, pass into throttle to getLocations
@@ -36,6 +40,7 @@ const Main = (): JSX.Element => {
 
   // Get forecast
   const getForecast = async (location: string) => {
+    setForecastLoading(true);
     if (location) {
       const newForecast = await client.getForecast(location);
       if (newForecast != null) {
@@ -43,6 +48,7 @@ const Main = (): JSX.Element => {
       }
       console.log(newForecast);
     }
+    setForecastLoading(false);
   };
 
   // Invoke getForecast when location changes
@@ -65,8 +71,12 @@ const Main = (): JSX.Element => {
           }}
         >
           <Typography component="h1" variant="h4">
-            Weather Forecast App
+            Weather
+            <Typography component="h1" fontSize={15}>
+              <i>by Adrian Hong</i>
+            </Typography>
           </Typography>
+
           <Typography component="h2" variant="body1">
             <i>Find out whether the weather is wet there! 💦</i>
           </Typography>
@@ -82,12 +92,14 @@ const Main = (): JSX.Element => {
             onChange={(event: SyntheticEvent, newValue: string | null) =>
               setLocationSearchValue(newValue || "")
             }
-            onInputChange={(event: SyntheticEvent, newInputValue: string) =>
-              onChangeHandler(newInputValue)
-            }
+            onInputChange={(event: SyntheticEvent, newInputValue: string) => {
+              setAutocompleteLoading(true);
+              onChangeHandler(newInputValue);
+            }}
             noOptionsText="No locations"
+            loading={autocompleteLoading}
           />
-          <WeatherDisplay forecast={forecast} />
+          <WeatherDisplay forecast={forecast} loading={forecastLoading} />
         </Box>
         <Footer />
       </Container>

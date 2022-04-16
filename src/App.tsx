@@ -1,4 +1,4 @@
-import { green, purple } from "@mui/material/colors";
+import { CssBaseline } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Main from "./views/Main";
 declare module "@mui/material/styles" {
@@ -18,11 +18,17 @@ declare module "@mui/material/styles" {
 const theme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: "#3f51b5",
     },
-    secondary: {
-      main: green[500],
+    // secondary: {
+    //   main: "#c5cae9",
+    // },
+    background: {
+      default: "#c5cae9",
     },
+    // text: {
+    //   primary: "#ffffff",
+    // },
   },
 });
 
@@ -30,6 +36,7 @@ function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Main />
       </ThemeProvider>
     </div>

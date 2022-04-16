@@ -7,7 +7,6 @@ const Footer = (): JSX.Element => {
       elevation={3}
     >
       <Typography variant="body2" color="text.secondary" align="center" mt="5">
-        {"Made by "}
         <Link color="inherit" href="https://adrianhong.dev/" target="_blank">
           Adrian Hong
         </Link>
