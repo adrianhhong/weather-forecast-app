@@ -8,7 +8,7 @@ import { ForecastBody } from "../client/types";
 import WeatherDisplay from "../components/WeatherDisplay";
 import { SyntheticEvent } from "react";
 import { Box } from "@mui/system";
-import Footer from "../components/Footer";
+import { blue } from "@mui/material/colors";
 
 const defaultOptions: string[] = [];
 
@@ -46,7 +46,6 @@ const Main = (): JSX.Element => {
       if (newForecast != null) {
         setForecast(newForecast);
       }
-      console.log(newForecast);
     }
     setForecastLoading(false);
   };
@@ -68,6 +67,7 @@ const Main = (): JSX.Element => {
             flexDirection: "column",
             alignItems: "center",
             gap: 5,
+            width: "inherit",
           }}
         >
           <Box
@@ -79,9 +79,19 @@ const Main = (): JSX.Element => {
             }}
           >
             <Typography component="h1" variant="h4">
-              <b>Weather</b>
-              <Typography component="h1" fontSize={15}>
-                <i>by Adrian Hong</i>
+              <b>WEATHER</b>
+              <Typography component="h1" fontSize={15} color={blue[800]}>
+                <b>
+                  by{" "}
+                  <a
+                    href="https://adrianhong.dev/"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "inherit" }}
+                  >
+                    Adrian Hong
+                  </a>
+                </b>
               </Typography>
             </Typography>
             <Typography component="h2" fontSize={13}>
@@ -89,7 +99,7 @@ const Main = (): JSX.Element => {
             </Typography>
           </Box>
           <Autocomplete
-            sx={{ width: 300 }}
+            sx={{ width: "inherit" }}
             renderInput={(params) => (
               <TextField {...params} label="Search a location" fullWidth />
             )}
@@ -104,12 +114,11 @@ const Main = (): JSX.Element => {
               setAutocompleteLoading(true);
               onChangeHandler(newInputValue);
             }}
-            noOptionsText="No locations"
+            freeSolo
             loading={autocompleteLoading}
           />
           <WeatherDisplay forecast={forecast} loading={forecastLoading} />
         </Box>
-        {/* <Footer /> */}
       </Container>
     </>
   );

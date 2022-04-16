@@ -1,7 +1,8 @@
-import { Grid, Typography, Box, CircularProgress } from "@mui/material";
-import { deepPurple, grey } from "@mui/material/colors";
-import { ForecastBody, Forecastday } from "../client/types";
+import { Grid, Box, CircularProgress } from "@mui/material";
+import { blue, grey } from "@mui/material/colors";
+import { ForecastBody } from "../client/types";
 import FutureForecast from "./FutureForecast";
+import TodayWeather from "./TodayWeather";
 
 interface WeatherDisplayProps {
   forecast: ForecastBody | null;
@@ -23,10 +24,11 @@ const WeatherDisplay = ({
               item
               xs={12}
               sx={{
-                background: `linear-gradient(${deepPurple[400]}, ${deepPurple[700]})`,
+                background: `linear-gradient(${blue[400]}, ${blue[700]})`,
                 borderRadius: "25px",
                 color: grey[50],
                 gap: 0.5,
+                boxShadow: 10,
               }}
             >
               <Box
@@ -37,33 +39,7 @@ const WeatherDisplay = ({
                   m: 3,
                 }}
               >
-                <Typography component="h3" variant="body1">
-                  {forecast?.current?.last_updated_epoch != null &&
-                    `${new Date(
-                      forecast?.current?.last_updated_epoch * 1000
-                    ).toLocaleString("en-AU", {
-                      weekday: "long",
-                      day: "numeric",
-                      month: "long",
-                      hour: "numeric",
-                      minute: "numeric",
-                    })}`}
-                </Typography>
-                {forecast?.current?.condition != null && (
-                  <img
-                    src={forecast?.current?.condition?.icon}
-                    alt={forecast?.current?.condition?.text}
-                    width="50"
-                  />
-                )}
-                <Typography component="h4" fontSize={20}>
-                  {forecast?.current?.condition?.text != null &&
-                    `${forecast?.current?.condition?.text}`}
-                </Typography>
-                <Typography component="h3" fontSize={100}>
-                  {forecast?.current?.temp_c != null &&
-                    `${forecast?.current?.temp_c}°C`}
-                </Typography>
+                <TodayWeather forecast={forecast} />
               </Box>
             </Grid>
             <Grid
@@ -72,9 +48,10 @@ const WeatherDisplay = ({
               xs={12}
               marginBottom={5}
               sx={{
-                background: `linear-gradient(${deepPurple[400]}, ${deepPurple[700]})`,
+                background: `linear-gradient(${blue[700]}, ${blue[400]})`,
                 borderRadius: "25px",
                 color: grey[50],
+                boxShadow: 10,
               }}
             >
               <Box

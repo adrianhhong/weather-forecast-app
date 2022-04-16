@@ -1,5 +1,5 @@
 import { CssBaseline } from "@mui/material";
-import { blue, blueGrey, deepPurple, grey, indigo } from "@mui/material/colors";
+import { blue, grey } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Main from "./views/Main";
 declare module "@mui/material/styles" {
@@ -19,17 +19,20 @@ declare module "@mui/material/styles" {
 const theme = createTheme({
   palette: {
     primary: {
-      main: deepPurple[500],
+      main: blue[500],
     },
     // secondary: {
     //   main: "#c5cae9",
     // },
     background: {
-      default: deepPurple[100],
+      default: blue[50],
     },
     text: {
       primary: grey[800],
     },
+  },
+  typography: {
+    fontFamily: ["Overpass"].join(","),
   },
 });
 

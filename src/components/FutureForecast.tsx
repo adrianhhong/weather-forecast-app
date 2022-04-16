@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { deepPurple, grey } from "@mui/material/colors";
+import { blue, grey } from "@mui/material/colors";
 import { ForecastBody, Forecastday } from "../client/types";
 
 interface FutureForecastProps {
@@ -19,7 +19,7 @@ const FutureForecast = ({ forecast }: FutureForecastProps): JSX.Element => {
               item
               xs={12}
               sx={{
-                background: `linear-gradient(${deepPurple[400]}, ${deepPurple[300]})`,
+                background: `radial-gradient(${blue[300]}, ${blue[400]})`,
                 borderRadius: "25px",
                 color: grey[50],
               }}
@@ -54,11 +54,20 @@ const FutureForecast = ({ forecast }: FutureForecastProps): JSX.Element => {
                   </Grid>
                   <Grid item>
                     <Grid container wrap="nowrap" alignItems="center">
-                      <Typography component="h4" fontSize={15} marginRight={2}>
+                      <Typography component="h4" fontSize={15} marginRight={1}>
                         <b>
-                          {forecastDay?.day?.avgtemp_c != null &&
-                            `${forecastDay?.day?.avgtemp_c}°C`}
+                          {forecastDay?.day?.maxtemp_c != null &&
+                            `${Math.round(forecastDay?.day?.maxtemp_c)}°C`}
                         </b>
+                      </Typography>
+                      <Typography
+                        component="h4"
+                        fontSize={12}
+                        marginRight={1}
+                        color={blue[100]}
+                      >
+                        {forecastDay?.day?.mintemp_c != null &&
+                          `${Math.round(forecastDay?.day?.mintemp_c)}°C`}
                       </Typography>
                       {forecastDay?.day?.condition != null && (
                         <img
