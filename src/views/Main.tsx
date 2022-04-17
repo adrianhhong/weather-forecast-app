@@ -79,8 +79,8 @@ const Main = (): JSX.Element => {
             }}
           >
             <Typography component="h1" variant="h4">
-              <b>WEATHER</b>
-              <Typography component="h1" fontSize={15} color={blue[800]}>
+              <b>Weather</b>
+              <Typography fontSize={15} color={blue[800]}>
                 <b>
                   by{" "}
                   <a

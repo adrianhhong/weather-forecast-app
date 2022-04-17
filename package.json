@@ -45,6 +45,10 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash.throttle": "^4.1.6"
+    "@types/lodash.throttle": "^4.1.6",
+    "msw": "^0.39.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
