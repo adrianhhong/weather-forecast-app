@@ -1,14 +1,13 @@
 import { Autocomplete, Container, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, SyntheticEvent } from "react";
 import throttle from "lodash.throttle";
+import { Box } from "@mui/system";
+import { blue } from "@mui/material/colors";
 
 import client from "../client";
 import { ForecastBody } from "../client/types";
 import WeatherDisplay from "../components/WeatherDisplay";
-import { SyntheticEvent } from "react";
-import { Box } from "@mui/system";
-import { blue } from "@mui/material/colors";
 
 const defaultOptions: string[] = [];
 
