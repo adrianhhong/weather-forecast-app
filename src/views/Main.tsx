@@ -23,13 +23,17 @@ const Main = (): JSX.Element => {
   // Get locations and present in nice format
   const getLocations = async (text: string) => {
     if (text) {
-      const newLocations = await client.getLocationSearch(text);
-      setLocationSearchOptions(
-        newLocations?.map(
-          (location) =>
-            `${location.name}, ${location.region}, ${location.country}`
-        ) || []
-      );
+      try {
+        const newLocations = (await client.getLocationSearch(text)) || [];
+        setLocationSearchOptions(
+          newLocations?.map(
+            (location) =>
+              `${location.name}, ${location.region}, ${location.country}`
+          )
+        );
+      } catch {
+        // TODO: Probably could send some sort of front-end error popup here
+      }
     }
     setAutocompleteLoading(false);
   };

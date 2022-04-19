@@ -19,7 +19,6 @@ class Client {
       );
       return await res.json();
     } catch (e) {
-      // TODO: Reflect errors on frontend popup
       console.error(e);
     }
   }
@@ -36,7 +35,6 @@ class Client {
       );
       return await res.json();
     } catch (e) {
-      // TODO: Reflect errors on frontend popup
       console.error(e);
     }
   }

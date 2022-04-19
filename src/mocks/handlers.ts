@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { forecastData, searchData } from "../client/tests/fixtures";
+import { forecastData, searchData } from "./fixtures";
 
 export const handlers = [
   rest.get(

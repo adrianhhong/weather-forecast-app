@@ -16,6 +16,7 @@ const FutureForecast = ({ forecast }: FutureForecastProps): JSX.Element => {
         {forecast?.forecast?.forecastday?.map((forecastDay: Forecastday) => {
           return (
             <Grid
+              key={forecastDay.date}
               item
               xs={12}
               sx={{
