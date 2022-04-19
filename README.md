@@ -2,7 +2,7 @@
 
 App that searches the current and future weather (for the next 2 days) at a location. Uses https://www.weatherapi.com/ to get the weather information; mainly Forecast API and Search/Autocomplete API.
 
-Uses [Material UI](https://mui.com/)
+Uses [Material UI](https://mui.com/) for component UI.
 
 ## Local Usage
 
@@ -10,6 +10,11 @@ Uses [Material UI](https://mui.com/)
 2. Create a file called `.env.local` and populate your weatherapi key `REACT_APP_WEATHER_API_KEY="your key goes here"`.
 3. Run `npm run start` to build the app in the local browser.
 4. Head to `http://localhost:3000` to view the application.
+
+### Application
+
+1. Search a location and pick one.
+2. See the current weather and weather for the next 2 days.
 
 ## Testing
 
