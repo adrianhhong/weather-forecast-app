@@ -1,12 +1,15 @@
-# Weather Forecast App
+# Weather Forecast App by Adrian Hong
 
-App that searches the current and future weather (for the next 2 days) at a location. Uses https://www.weatherapi.com/ to get the weather information.
+App that searches the current and future weather (for the next 2 days) at a location. Uses https://www.weatherapi.com/ to get the weather information; mainly Forecast API and Search/Autocomplete API.
+
+Uses [Material UI](https://mui.com/)
 
 ## Local Usage
 
-1. Create a file called `.env.local` and populate your weatherapi key `REACT_APP_WEATHER_API_KEY="your key goes here"`.
-2. Run `npm run start` to build the app in the local browser.
-3. Head to `http://localhost:3000` to view the application.
+1. Run `npm ci` to install packages.
+2. Create a file called `.env.local` and populate your weatherapi key `REACT_APP_WEATHER_API_KEY="your key goes here"`.
+3. Run `npm run start` to build the app in the local browser.
+4. Head to `http://localhost:3000` to view the application.
 
 ## Testing
 
