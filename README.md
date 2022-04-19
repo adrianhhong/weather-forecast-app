@@ -11,10 +11,10 @@ Uses [Material UI](https://mui.com/) for component UI.
 3. Run `npm run start` to build the app in the local browser.
 4. Head to `http://localhost:3000` to view the application.
 
-### Application
+### Using the Application
 
-1. Search a location and pick one.
-2. See the current weather and weather for the next 2 days.
+1. Search for a location, and pick one from the dropdown list.
+2. See the current weather, and weather for the next 2 days.
 
 ## Testing
 
@@ -24,7 +24,7 @@ Uses [Material UI](https://mui.com/) for component UI.
 ## Improvements
 
 - Types were generated using an online JSON to Typescript tool for convenience. A further look into cleaning up the types may be needed.
-- I haven't elegantly shown any frontend indication in the case weatherapi returns an error. Future work may look into showing a popup when an error returns.
+- I currently don't show any errors in the front-end when an error returns from the weather API. Future work may look into displaying a popup or input error when an error returns from the API.
 
 ## Screenshots
 
